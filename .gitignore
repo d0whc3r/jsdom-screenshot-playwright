@@ -1,0 +1,62 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+dist/
+/tmp
+/out-tsc
+.rollup.cache/
+*.tsbuildinfo
+
+# dependencies
+node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.idea
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+coverage/
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+.eslintcache
+
+# System Files
+.DS_Store
+Thumbs.db
+.vscode/settings.json
+__pycache__
+
+# CI Files
+/.cache
+.jest-cache
+.history
+
+# Next local environment variables
+.env.local
+.vercel
+
+# yarn3
+.yarn/cache
+.yarn/v6
+.yarn/install-state.gz
+
+# Python
+__pycache__
