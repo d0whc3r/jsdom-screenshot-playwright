@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/d0whc3r/tipster-tools.git"
+    "url": "https://github.com/d0whc3r/jsdom-screenshot-playwright.git"
   },
   "keywords": [
     "jsdom",
@@ -30,7 +30,8 @@
     "build:code": "rollup -c",
     "build:dts": "dts-bundle-generator -o dist/index.d.ts src/index.ts",
     "build": "yarn build:code & yarn build:dts",
-    "test": "jest"
+    "test": "jest",
+    "release": "semantic-release"
   },
   "dependencies": {
     "playwright": "^1.33.0"

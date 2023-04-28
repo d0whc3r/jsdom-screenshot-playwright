@@ -1,7 +1,7 @@
-name: Testing
+name: Publish
 
 on:
-  pull_request:
+  push:
     branches: [ "master", "develop" ]
 
 jobs:
@@ -15,6 +15,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
       - uses: actions/cache@v3
         with:
           path: |
@@ -26,6 +29,15 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
+      - name: Configure git
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
       - run: yarn install --immutable
       - run: yarn build
       - run: yarn test
+      - name: Publish
+        run: yarn release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

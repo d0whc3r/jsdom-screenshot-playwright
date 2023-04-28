@@ -14,7 +14,8 @@
     "test:sample": "yarn workspace testing test",
     "test:lib": "yarn workspace jsdom-screenshot-playwright test",
     "test": "yarn test:lib && yarn test:sample",
-    "lint-staged": "lint-staged --allow-empty"
+    "lint-staged": "lint-staged --allow-empty",
+    "release": "yarn workspace jsdom-screenshot-playwright release",
   },
   "devDependencies": {
     "@semantic-release/changelog": "6.0.3",
