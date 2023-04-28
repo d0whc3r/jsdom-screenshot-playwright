@@ -6,9 +6,21 @@ import { close, start } from 'jsdom-screenshot-playwright'
 expect.extend({ toMatchImageSnapshot })
 
 beforeAll(async () => {
-  await start({
-    defaultSelector: 'div', // first div element in rendered html
-  })
+  await start(
+    {
+      defaultSelector: 'div', // first div element in rendered html
+    },
+    {
+      viewport: {
+        width: 800,
+        height: 600,
+      },
+      screen: {
+        width: 800,
+        height: 600,
+      },
+    }
+  )
 })
 
 afterAll(async () => {
