@@ -10,6 +10,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "prepare": "husky install",
     "build": "yarn workspace jsdom-screenshot-playwright build",
     "test:sample": "yarn workspace testing test",
     "test:lib": "yarn workspace jsdom-screenshot-playwright test",
