@@ -6,6 +6,12 @@ const config: Config = {
   detectOpenHandles: true,
   forceExit: true,
   collectCoverage: !!process.env.CI,
+  modulePathIgnorePatterns: [
+    '<rootDir>/dist/',
+    '<rootDir>/node_modules/',
+    '<rootDir>/coverage/',
+    '<rootDir>/.rollup.cache/',
+  ],
 }
 
 export default config
