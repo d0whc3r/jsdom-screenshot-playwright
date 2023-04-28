@@ -1,0 +1,33 @@
+name: Testing
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/cache@v3
+      with:
+        path: |
+          **/node_modules
+          ~/.cache/ms-playwright
+        key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'yarn'
+    - run: yarn install --immutable
+    - run: yarn build
+    - run: yarn test
