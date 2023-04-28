@@ -12,6 +12,7 @@ const config: Config = {
     '<rootDir>/coverage/',
     '<rootDir>/.rollup.cache/',
   ],
+  testMatch: ['<rootDir>/src/**/*.spec.ts'],
 }
 
 export default config
