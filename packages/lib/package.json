@@ -1,0 +1,43 @@
+{
+  "name": "jsdom-screenshot-playwright",
+  "version": "1.0.0",
+  "description": "Generate screenshots of jsdom using Playwright",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "author": {
+    "email": "1378986+d0whc3r@users.noreply.github.com",
+    "name": "d0whc3r",
+    "url": "https://github.com/d0whc3r"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/d0whc3r/tipster-tools.git"
+  },
+  "keywords": [
+    "jsdom",
+    "screenshot",
+    "snapshot",
+    "playwright",
+    "image",
+    "jest"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build:code": "rollup -c",
+    "build:dts": "dts-bundle-generator -o dist/index.d.ts src/index.ts",
+    "build": "yarn build:code & yarn build:dts",
+    "test": "jest"
+  },
+  "dependencies": {
+    "playwright": "^1.33.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "11.1.0",
+    "dts-bundle-generator": "8.0.1",
+    "rollup": "3.21.0"
+  }
+}
