@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.1](https://github.com/d0whc3r/jsdom-screenshot-playwright/compare/v1.0.0...v1.0.1) (2023-04-29)
+
+
+### Bug Fixes
+
+* copy readme on release ([01432f2](https://github.com/d0whc3r/jsdom-screenshot-playwright/commit/01432f232e43bf2cbbbae789a054c342751af26f))
+* update defaults ([0f7838b](https://github.com/d0whc3r/jsdom-screenshot-playwright/commit/0f7838bd33e35191ced216cea7b43c9c911455d4))
+
 # 1.0.0 (2023-04-29)
 
 
