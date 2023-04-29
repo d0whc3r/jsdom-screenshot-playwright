@@ -10,6 +10,11 @@ const toMatchImageSnapshot = configureToMatchImageSnapshot({
   // use SSIM to limit false positive
   // https://github.com/americanexpress/jest-image-snapshot#recommendations-when-using-ssim-comparison
   comparisonMethod: 'ssim',
+  customDiffConfig: {
+    ssim: 'fast',
+  },
+  failureThreshold: 0.01,
+  failureThresholdType: 'percent',
 })
 expect.extend({ toMatchImageSnapshot })
 
