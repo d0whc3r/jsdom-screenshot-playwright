@@ -10,6 +10,7 @@ export class Browser {
       !this._instance ||
       JSON.stringify(this.lastOptions ?? '') !== JSON.stringify(options ?? '')
     ) {
+      this.lastOptions = options
       if (this._instance) {
         this._instance.end()
       }
