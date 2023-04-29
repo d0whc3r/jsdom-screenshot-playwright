@@ -10,6 +10,7 @@ export type BrowserOptions = {
   launchOptions?: LaunchOptions
   defaultSelector?: string
   maxOpenPages?: number
+  debug?: boolean
 }
 export type BrowserCloseOptions = 'all' | 'context' | 'page'
 

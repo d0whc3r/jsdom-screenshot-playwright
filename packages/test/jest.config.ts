@@ -3,10 +3,10 @@ import type { Config } from 'jest'
 const config: Config = {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
-  setupFilesAfterEnv: ['<rootDir>/jest.setup-afterenv.ts'],
   collectCoverage: !!process.env.CI,
-  modulePathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/coverage/'],
   testMatch: ['<rootDir>/src/**/*.spec.ts?(x)'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup-afterenv.ts'],
+  setupFiles: ['<rootDir>/jest.setup.ts'],
 }
 
 export default config

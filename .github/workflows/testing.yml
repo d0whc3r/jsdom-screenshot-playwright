@@ -29,3 +29,9 @@ jobs:
       - run: yarn install --immutable
       - run: yarn build
       - run: yarn test
+      - name: Upload failure tests
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: screenshot-files
+          path: packages/**/__image_snapshots__/__diff_output__
