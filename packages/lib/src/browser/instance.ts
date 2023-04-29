@@ -11,7 +11,7 @@ import type {
 } from 'playwright'
 import { chromium, devices, firefox, webkit } from 'playwright'
 
-const defaultDevice: keyof typeof devices = 'Desktop Chrome HiDPI'
+const defaultDevice: keyof typeof devices = 'Desktop Firefox HiDPI'
 
 export class BrowserInstance {
   private readonly maxOpenPages: number
