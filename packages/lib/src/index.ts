@@ -27,10 +27,11 @@ export async function generateImage(
 
 export function start(
   options?: BrowserOptions,
-  contextOptions?: BrowserContextOptions,
-  withDebug = false
+  contextOptions?: BrowserContextOptions
 ) {
-  return Browser.getBrowser(options, withDebug).start(contextOptions)
+  return Browser.getBrowser(options, options?.debug ?? false).start(
+    contextOptions
+  )
 }
 
 export function close() {

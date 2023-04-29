@@ -5,7 +5,6 @@ import type {
 } from './types'
 import type {
   Browser,
-  BrowserContext,
   BrowserContextOptions,
   LaunchOptions,
   Page,
@@ -19,8 +18,7 @@ export class BrowserInstance {
   private readonly bufferOpenPages: number
   private readonly browser: Promise<Browser>
   private readonly selectedDevice: (typeof devices)[typeof defaultDevice]
-  private context: BrowserContext | undefined
-  private readonly defaultSelector: string | undefined
+  private readonly defaultSelector?: string
   private openPages: Page[] = []
 
   constructor(
@@ -64,28 +62,30 @@ export class BrowserInstance {
     this.selectedDevice = devices[device]
   }
 
+  get context() {
+    return this.browser.then((b) => b.contexts()[0])
+  }
+
   async start(contextOptions?: BrowserContextOptions) {
-    return new Promise<boolean>((resolve, reject) => {
-      if (this.context) {
-        if (this.withDebug) {
-          console.log('[jsdom-screenshot-playwright] start (existing Context)')
-        }
-        resolve(true)
-      } else {
-        if (this.withDebug) {
-          console.log('[jsdom-screenshot-playwright] start (new Context)')
-        }
-        this.generateContext(contextOptions)
-          .then(() => {
-            resolve(true)
-          })
-          .catch(reject)
+    if (await this.context) {
+      if (this.withDebug) {
+        console.log('[jsdom-screenshot-playwright] start (existing Context)')
       }
+      return Promise.resolve(true)
+    }
+    return new Promise<boolean>((resolve, reject) => {
+      if (this.withDebug) {
+        console.log('[jsdom-screenshot-playwright] start (new Context)')
+      }
+      this.generateContext(contextOptions)
+        .then(() => {
+          resolve(true)
+        })
+        .catch(reject)
     })
   }
 
   end() {
-    this.context = undefined
     return this.close('all')
   }
 
@@ -136,8 +136,7 @@ export class BrowserInstance {
   ): Promise<Page> {
     let cnt = await this.context
     if (!cnt) {
-      this.context = await this.generateContext(contextOptions)
-      cnt = this.context
+      cnt = await this.generateContext(contextOptions)
     }
     const page = await cnt.newPage()
     if (url) {
