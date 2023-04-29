@@ -6,13 +6,9 @@ const config: Config = {
   detectOpenHandles: true,
   forceExit: true,
   collectCoverage: !!process.env.CI,
-  modulePathIgnorePatterns: [
-    '<rootDir>/dist/',
-    '<rootDir>/node_modules/',
-    '<rootDir>/coverage/',
-    '<rootDir>/.rollup.cache/',
-  ],
   testMatch: ['<rootDir>/src/**/*.spec.ts'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup-afterenv.ts'],
+  setupFiles: ['<rootDir>/jest.setup.ts'],
 }
 
 export default config

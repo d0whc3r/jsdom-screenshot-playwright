@@ -26,3 +26,7 @@ beforeAll(async () => {
 afterAll(async () => {
   await close()
 })
+
+beforeEach(() => {
+  expect.hasAssertions()
+})
