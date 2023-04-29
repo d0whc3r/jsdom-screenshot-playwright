@@ -29,7 +29,7 @@ jobs:
       - run: yarn install --immutable
       - run: yarn build
       - run: yarn test
-      - name: Archive production artifacts
+      - name: Upload failure tests
         if: ${{ failure() }}
         uses: actions/upload-artifact@v3
         with:
