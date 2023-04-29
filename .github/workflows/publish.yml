@@ -36,6 +36,8 @@ jobs:
       - run: yarn install --immutable
       - run: yarn build
       - run: yarn test
+      - name: Copy readme
+        run: cp README.md packages/lib
       - name: Publish
         run: yarn release
         env:

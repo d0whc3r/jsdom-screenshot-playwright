@@ -25,7 +25,7 @@ export class BrowserInstance {
     {
       device = defaultDevice,
       launchOptions,
-      maxOpenPages = 25,
+      maxOpenPages = 10,
       defaultSelector,
     }: BrowserOptions = {},
     private readonly withDebug = false
