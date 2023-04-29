@@ -11,6 +11,7 @@ export default function Button({ children, variant = 'primary' }: ButtonProps) {
     color: variant === 'primary' ? 'white' : 'black',
     height: '25px',
     width: '100px',
+    fontFamily: 'sans-serif',
   }
 
   return <button style={style}>{children}</button>
