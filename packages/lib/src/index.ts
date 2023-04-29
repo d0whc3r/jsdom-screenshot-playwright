@@ -14,11 +14,13 @@ export async function generateImage(
   )
   fs.writeFileSync(tmpFile, html)
   const url = `file://${tmpFile}`
-  const result = await Browser.getBrowser().screenshot(
-    url,
-    options?.selector,
-    options
-  )
+  const result = await Browser.getBrowser().screenshot(url, options?.selector, {
+    ...options,
+    screenshotOptions: {
+      scale: 'css',
+      ...options?.screenshotOptions,
+    },
+  })
   fs.unlinkSync(tmpFile)
   return result
 }
