@@ -4,7 +4,10 @@ import { BrowserInstance } from './instance'
 
 jest.mock('./instance', () => {
   return {
-    BrowserInstance: jest.fn(),
+    BrowserInstance: jest.fn().mockReturnValue({
+      start: jest.fn().mockResolvedValue(true),
+      end: jest.fn().mockResolvedValue(true),
+    }),
   }
 })
 
@@ -31,7 +34,7 @@ describe('Browser', () => {
 
     it('should get browser with options', () => {
       expect(Browser.getBrowser({})).toBeTruthy()
-      expect(BrowserInstance).toHaveBeenCalledTimes(0)
+      expect(BrowserInstance).toHaveBeenCalledTimes(1)
     })
 
     it('should get browser with debug', () => {
