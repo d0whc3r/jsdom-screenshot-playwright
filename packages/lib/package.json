@@ -39,6 +39,6 @@
   "devDependencies": {
     "@rollup/plugin-typescript": "11.1.0",
     "dts-bundle-generator": "8.0.1",
-    "rollup": "3.21.1"
+    "rollup": "3.21.2"
   }
 }
