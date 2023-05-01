@@ -23,21 +23,6 @@ Inspired by [jsdom-screenshot](https://github.com/dferber90/jsdom-screenshot)
 yarn add -D jsdom-screenshot-playwright
 ```
 
-## Basic usage
-
-In your test file:
-
-```js
-import { generateImage } from 'jsdom-screenshot-playwright';
-
-it('...', async () => {
-  ...
-  const screenshot = await generateImage('<h1>Hello World</h1>');
-  // do something with the image
-  expect(screenshot).toMatchImageSnapshot()
-});
-```
-
 # Usage in Jest, React & react-testing-library
 It is recommended to use this package with [jest-image-snapshot](https://www.npmjs.com/package/jest-image-snapshot) and [react-testing-library](https://github.com/kentcdodds/react-testing-library). Use it as together like this:
 
@@ -111,7 +96,7 @@ Takes a screenshot of the current jsdom document and returns a `Buffer` containi
 
 #### `options`
 
-- `options.selector` (optional) - A selector to use for the screenshot. Defaults to `body`.
+- `options.selector` (optional) - A selector to use for the screenshot.
 - `options.screenshotOptions` (optional) - Options to pass to playwright's [screenshot](https://playwright.dev/docs/api/class-page#page-screenshot) method.
 - `options.contextOptions` (optional) - Options to pass to playwright's [launch context](https://playwright.dev/docs/api/class-browser#browser-new-context) method.
 
