@@ -95,7 +95,7 @@ export class BrowserInstance {
     { screenshotOptions, contextOptions }: ScreenshotParams = {}
   ) {
     const page = await this.load(url, contextOptions)
-    const element = selector ? page.locator(selector).first() : page
+    const element = selector && !screenshotOptions?.fullPage ? page.locator(selector).first() : page
     const result = await element.screenshot(screenshotOptions)
     this.managePages(page)
     return result
