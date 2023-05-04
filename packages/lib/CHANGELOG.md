@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/d0whc3r/jsdom-screenshot-playwright/compare/v1.0.2...v1.0.3) (2023-05-04)
+
+
+### Bug Fixes
+
+* do not use selector in fullPage screenshot ([46cf74d](https://github.com/d0whc3r/jsdom-screenshot-playwright/commit/46cf74db9f9f2de85db3de5016552f69d774be0d))
+
 ## [1.0.2](https://github.com/d0whc3r/jsdom-screenshot-playwright/compare/v1.0.1...v1.0.2) (2023-05-04)
 
 
