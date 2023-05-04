@@ -7,7 +7,7 @@ import type { BrowserContextOptions, Page } from 'playwright'
 export async function generateImage(
   options?: ScreenshotParams
 ): ReturnType<Page['screenshot']> {
-  const html = document.documentElement.outerHTML
+  const html = new XMLSerializer().serializeToString(document)
   const tmpFile = path.join(
     os.tmpdir(),
     `tmp${Math.random().toString(36).slice(2)}.html`
