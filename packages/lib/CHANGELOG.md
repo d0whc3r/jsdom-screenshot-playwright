@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/d0whc3r/jsdom-screenshot-playwright/compare/v1.0.1...v1.0.2) (2023-05-04)
+
+
+### Bug Fixes
+
+* update html extract ([1afb0a6](https://github.com/d0whc3r/jsdom-screenshot-playwright/commit/1afb0a6d9951bb65ad373c14d27f49f14d8fe3b0))
+
 ## [1.0.1](https://github.com/d0whc3r/jsdom-screenshot-playwright/compare/v1.0.0...v1.0.1) (2023-04-29)
 
 
