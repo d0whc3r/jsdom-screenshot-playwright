@@ -1,3 +1,4 @@
+import { Logger } from '../logger'
 import type {
   BrowserCloseOptions,
   BrowserOptions,
@@ -20,6 +21,7 @@ export class BrowserInstance {
   private readonly selectedDevice: (typeof devices)[typeof defaultDevice]
   private readonly defaultSelector?: string
   private openPages: Page[] = []
+  private readonly logger: Logger
 
   constructor(
     {
@@ -28,16 +30,15 @@ export class BrowserInstance {
       maxOpenPages = 10,
       defaultSelector,
     }: BrowserOptions = {},
-    private readonly withDebug = false
+    private readonly withDebug?: boolean
   ) {
-    if (this.withDebug) {
-      console.log('[jsdom-screenshot-playwright] constructor', {
-        device,
-        launchOptions,
-        maxOpenPages,
-        defaultSelector,
-      })
-    }
+    this.logger = new Logger(this.withDebug)
+    this.logger.log('constructor', {
+      device,
+      launchOptions,
+      maxOpenPages,
+      defaultSelector,
+    })
     this.defaultSelector = defaultSelector
     this.maxOpenPages = Math.max(1, maxOpenPages)
     this.bufferOpenPages = Math.ceil(maxOpenPages / 3)
@@ -68,15 +69,11 @@ export class BrowserInstance {
 
   async start(contextOptions?: BrowserContextOptions) {
     if (await this.context) {
-      if (this.withDebug) {
-        console.log('[jsdom-screenshot-playwright] start (existing Context)')
-      }
+      this.logger.log('start (existing Context)')
       return Promise.resolve(true)
     }
     return new Promise<boolean>((resolve, reject) => {
-      if (this.withDebug) {
-        console.log('[jsdom-screenshot-playwright] start (new Context)')
-      }
+      this.logger.log('start (new Context)')
       this.generateContext(contextOptions)
         .then(() => {
           resolve(true)
@@ -86,6 +83,7 @@ export class BrowserInstance {
   }
 
   end() {
+    this.logger.log('end')
     return this.close('all')
   }
 
@@ -95,7 +93,10 @@ export class BrowserInstance {
     { screenshotOptions, contextOptions }: ScreenshotParams = {}
   ) {
     const page = await this.load(url, contextOptions)
-    const element = selector && !screenshotOptions?.fullPage ? page.locator(selector).first() : page
+    const element =
+      selector && !screenshotOptions?.fullPage
+        ? page.locator(selector).first()
+        : page
     const result = await element.screenshot(screenshotOptions)
     this.managePages(page)
     return result
@@ -109,6 +110,7 @@ export class BrowserInstance {
   }
 
   private async close(what: BrowserCloseOptions = 'all'): Promise<void> {
+    this.logger.log('close', what)
     const browser = await this.browser
     try {
       if (what === 'all') {
@@ -124,9 +126,7 @@ export class BrowserInstance {
         }
       }
     } catch (error) {
-      if (this.withDebug) {
-        console.error('[jsdom-screenshot-playwright] close', error)
-      }
+      this.logger.error('close', error)
     }
   }
 

@@ -1,7 +1,7 @@
 import type { Config } from 'jest'
 
 const config: Config = {
-  preset: 'ts-jest',
+  preset: '../../jest.preset.js',
   testEnvironment: 'node',
   detectOpenHandles: true,
   forceExit: true,
