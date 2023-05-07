@@ -1,5 +1,17 @@
 # Changelog
 
+# [1.1.0](https://github.com/d0whc3r/jsdom-screenshot-playwright/compare/v1.0.3...v1.1.0) (2023-05-07)
+
+
+### Bug Fixes
+
+* update close promises ([9c2bb81](https://github.com/d0whc3r/jsdom-screenshot-playwright/commit/9c2bb81732a597b53001a5c9913d417f48bb74f7))
+
+
+### Features
+
+* use http server ([d13dcad](https://github.com/d0whc3r/jsdom-screenshot-playwright/commit/d13dcad08990537f53b32bc35f782eecda29a5c7))
+
 ## [1.0.3](https://github.com/d0whc3r/jsdom-screenshot-playwright/compare/v1.0.2...v1.0.3) (2023-05-04)
 
 
