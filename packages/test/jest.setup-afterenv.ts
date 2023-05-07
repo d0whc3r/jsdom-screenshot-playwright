@@ -22,6 +22,7 @@ beforeAll(async () => {
   await start(
     {
       defaultSelector: 'div', // first div element in rendered html
+      debug: true,
     },
     {
       viewport: {

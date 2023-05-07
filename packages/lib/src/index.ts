@@ -24,7 +24,6 @@ export async function generateImage(
       ...options?.screenshotOptions,
     },
   })
-  // await new Promise((resolve) => setTimeout(resolve, 300_000))
   fs.unlinkSync(tmpFile)
   return result
 }
@@ -46,7 +45,12 @@ export function close() {
   if (closeTimeout) {
     clearTimeout(closeTimeout)
   }
-  closeTimeout = setTimeout(() => {
-    return Promise.all([server.stop(), Browser.getBrowser().end()])
-  }, 5_000)
+  return new Promise((resolve, reject) => {
+    closeTimeout = setTimeout(() => {
+      Promise.all([server.stop(), Browser.getBrowser().end()]).then(
+        resolve,
+        reject
+      )
+    }, 2_000)
+  })
 }

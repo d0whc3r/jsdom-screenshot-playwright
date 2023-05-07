@@ -57,6 +57,7 @@ export class Server {
   async stop() {
     this.logger.log('stop')
     return new Promise<void>((resolve, reject) => {
+      console.log('STOP this.server.listening', this.server.listening)
       if (this.server.listening) {
         this.server.close((err) => {
           if (err) {
@@ -83,7 +84,10 @@ export class Server {
       this.server.listen(0, () => {
         const address = this.server.address()
         if (typeof address === 'string' || !address) {
-          throw new Error('Unexpected address type')
+          this.logger.log('start', { address })
+          return this.stop().then(() =>
+            reject(new Error('Unexpected address type'))
+          )
         }
         this._port = address.port
         this.logger.log('start', { port: this._port })

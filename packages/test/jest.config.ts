@@ -2,6 +2,8 @@ import type { Config } from 'jest'
 
 const config: Config = {
   preset: 'ts-jest',
+  // detectOpenHandles: true,
+  // forceExit: true,
   testEnvironment: 'jsdom',
   collectCoverage: !!process.env.CI,
   testMatch: ['<rootDir>/src/**/*.spec.ts?(x)'],
