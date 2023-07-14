@@ -37,7 +37,7 @@
     "playwright": "^1.33.0"
   },
   "devDependencies": {
-    "@rollup/plugin-typescript": "11.1.1",
+    "@rollup/plugin-typescript": "11.1.2",
     "dts-bundle-generator": "8.0.1",
     "rollup": "3.21.7"
   }
