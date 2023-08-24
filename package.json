@@ -29,7 +29,7 @@
     "@types/node": "20.4.2",
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
-    "babel-jest": "29.6.1",
+    "babel-jest": "29.6.4",
     "eslint": "8.45.0",
     "eslint-config-prettier": "8.8.0",
     "eslint-import-resolver-typescript": "3.5.5",
